@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{%  load crispy_forms_tags %}
+{% block 'ul'%}
+<li><a class="nav-link" href="{% url 'report'  %}">Do a Report</a></li>
+<li><a class="nav-link" href="{% url 'reportList'  %}">Report List</a></li>
+{% endblock%}
+{% block 'body'%}
+<br>
+<h1>Staff (Teams) Main Page</h1>
+<br>
+{%if tasks%}
+<caption>Task Details </caption>
+<br><br>
+<div class="col-sm-8">
+<table style="border:1px solid black; border-collapse: collapse;" class="table table-dark table-hover">
+        {%for t in tasks%}
+        <tr><td><b>ID:</b> {{t.id}}</td>
+        <td><b>Task:</b> {{t.taskName}}</td>
+        <td><b>Due Date:</b> {{t.dueDate}}</td>
+        <td><b>Status:</b> {{t.status}}</td>
+        <td><b>Team:</b> {{t.team}}</td>
+        <td><a href="{% url 'updatetask' t.id  %}" class="btn btn-outline-warning">Update</a></td>
+        <td></td>
+        <td><a href="{% url 'deletetask' t.id  %}" class="btn btn-outline-success" >Done</a></td>
+        </tr>
+        {%endfor%}
+</table>
+</div>
+<br>
+{%else%}
+<p>No Tasks found</p>
+{%endif%}
+
+{% endblock%}

@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{%  load crispy_forms_tags %}
+{% load static%}
+{%block 'title'%}Choosing{%endblock%}
+{% block 'body'%}
+
+<form method="post">
+<br>
+
+    <div class="container">
+  <br>
+
+  <div class="card" style="width:400px">
+    <img src="{% static 'images/manager.png' %}">
+    <div class="card-body">
+      <h4 class="card-title">Manager</h4>
+      <p class="card-text">In this page manager can create task for the staff so they can know what task they should do.</p>
+      <a href="{%url 'mhomepage'%}" class="btn btn-primary">See Page</a>
+    </div>
+  </div>
+  <br>
+
+  <br>
+
+  <div class="card" style="width:400px">
+    <div class="card-body">
+      <h4 class="card-title">Employees</h4>
+      <p class="card-text">Here the employees can see what task do they have</p>
+      <a href="{%url 'ehomepage'%}" class="btn btn-primary">See Page</a>
+    </div>
+    <img src="{% static 'images/employeess.png' %}">
+  </div>
+</div>
+
+  <br><br><br><br>
+
+    {% csrf_token %}
+    </form>
+{% endblock%}

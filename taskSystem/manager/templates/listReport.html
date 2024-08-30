@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{%  load crispy_forms_tags %}
+{% block 'ul'%}
+ <li><a class="nav-link" href="{% url 'report'  %}">Do Report</a></li>
+<li><a class="nav-link" href="{% url 'ehomepage'  %}">Tasks</a></li>
+{% endblock%}
+{% block 'body'%}
+<br>
+<h1>Manager Main Page</h1>
+<br>
+{%if report%}
+<caption>Reports Details </caption>
+<br>
+<br>
+<div class="col-sm-8">
+<table style="border:1px solid black; border-collapse: collapse;" class="table table-dark table-hover">
+        {%for r in report%}
+        <tr><td><b>ID:</b> {{r.id}}</td>
+        <td><b>Task:</b> {{r.taskName}}</td>
+            <td><b>Report:</b> {{r.report}}</td>
+        <td><a href="{% url 'updatereport' r.id  %}" class="btn btn-outline-info">Edit</a></td>
+        <td></td>
+        <td><a href="{% url 'deletereport' r.id  %}" class="btn btn-outline-danger" >Delete</a></td>
+        </tr>
+        {%endfor%}
+</table>
+</div>
+<br>
+{%else%}
+<p>No Reports found</p>
+{%endif%}
+
+{% endblock%}

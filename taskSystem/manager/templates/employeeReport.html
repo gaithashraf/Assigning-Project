@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{%  load crispy_forms_tags %}
+{%block 'title'%}Report Page{%endblock%}
+{% block 'ul'%}
+<li><a class="nav-link" href="{% url 'ehomepage'  %}">Tasks</a></li>
+<li><a class="nav-link" href="{% url 'reportList'  %}">Report List</a></li>
+{% endblock%}
+{% block 'body'%}
+<form method="post">
+<br>
+<div class="col-sm-6">
+{{form|crispy}}
+    </div>
+    <button type="submit" class="btn btn-outline-success" formnovalidate>Save Report</button>
+    {% csrf_token %}
+    </form>
+{% endblock%}
